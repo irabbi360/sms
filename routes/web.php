@@ -26,3 +26,11 @@ Route::post('department/save', 'DepartmentController@save');
 Route::get('department/edit/{id}', 'DepartmentController@edit');
 Route::post('department/update/{id}', 'DepartmentController@update');
 Route::delete('department/delete/{id}', 'DepartmentController@delete');
+
+//classes
+Route::get('classes','ClassController@index');
+Route::get('class/create','ClassController@create');
+Route::post('class/save','ClassController@save');
+Route::get('class/edit/{id}','ClassController@edit');
+Route::post('class/update/{id}','ClassController@update');
+Route::delete('class/delete/{id}','ClassController@delete');

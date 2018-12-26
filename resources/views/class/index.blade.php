@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title','Departments')
+@section('title','Classes')
 
     @section('content')
 
         <div class="card">
             <div class="card-body">
-                Department List || <a href="{{ url('department/create') }}">Add Department</a>
+                Class List || <a href="{{ url('class/create') }}">Add Class</a>
             </div>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
@@ -22,13 +22,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($departments as  $department)
+                @foreach($datas as  $data)
                 <tr>
-                    <th scope="row">{{ $department->id }}</th>
-                    <td>{{ $department->title }}</td>
+                    <th scope="row">{{ $data->id }}</th>
+                    <td>{{ $data->title }}</td>
                     <td>
-                        <a href="{{ url('department/edit',$department->id) }}">Edit</a> ||
-                        <form id="delete-form-{{ $department->id }}" method="post" action="{{ url('department/delete', $department->id) }}" style="display: none">
+                        <a href="{{ url('class/edit',$data->id) }}">Edit</a> ||
+                        <form id="delete-form-{{ $data->id }}" method="post" action="{{ url('class/delete', $data->id) }}" style="display: none">
                             {{csrf_field()}}
                             {{ method_field('DELETE') }}
                         </form>
@@ -37,7 +37,7 @@
                                 if(confirm('Are you sure, You want to Delete this ??'))
                                 {
                                 event.preventDefault();
-                                document.getElementById('delete-form-{{ $department->id }}').submit();
+                                document.getElementById('delete-form-{{ $data->id }}').submit();
                                 }
                                 else {
                                 event.preventDefault();
