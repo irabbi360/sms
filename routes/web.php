@@ -34,3 +34,7 @@ Route::post('class/save','ClassController@save');
 Route::get('class/edit/{id}','ClassController@edit');
 Route::post('class/update/{id}','ClassController@update');
 Route::delete('class/delete/{id}','ClassController@delete');
+
+//student route
+ROute::get('students','StudentController@index');
+ROute::get('student/create','StudentController@create');

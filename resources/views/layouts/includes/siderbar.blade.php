@@ -8,7 +8,7 @@
             <a href="{{ url('classes') }}">Class</a>
         </div>
         <div class="card-body">
-            <a href="">Students</a>
+            <a href="{{ url('students') }}">Students</a>
         </div>
         <div class="card-body">
             <a href="">Staffs</a>
