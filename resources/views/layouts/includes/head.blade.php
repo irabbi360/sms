@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Student Management System</title>
+    <title>@yield('title') Student Management System</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

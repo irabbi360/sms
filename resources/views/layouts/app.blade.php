@@ -6,7 +6,17 @@
         @include('layouts.includes.nav')
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+
+                <div class="row justify-content-center">
+                    @include('layouts.includes.siderbar')
+
+                    <div class="col-md-9">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 </body>
