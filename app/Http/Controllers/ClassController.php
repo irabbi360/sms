@@ -33,18 +33,33 @@ class ClassController extends Controller
 
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $data = Classes::find($id);
 
+        return view('class.edit',compact('data'));
     }
 
-    public function update()
+    public function update(Request $request,$id)
     {
+        $this->validate($request,[
+            'title' => 'required'
+        ]);
 
+        $data = Classes::find($id);
+
+        $data->title = $request->title;
+
+        $data->save();
+
+        return redirect()->back()->with('status','Class successfully updated');
     }
 
-    public function delete()
+    public function delete($id)
     {
+        $data = Classes::find($id);
+        $data->delete();
 
+        return redirect()->back()->with('status','Class record deleted');
     }
 }

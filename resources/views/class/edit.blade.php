@@ -5,21 +5,21 @@
 @section('content')
 
     <div class="card">
-        <div class="card-header">Update Department Info #{{ $department->id }}</div>
+        <div class="card-header">Update Class Info #{{ $data->id }}</div>
         @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
             </div>
         @endif
         <div class="card-body">
-            <form method="POST" action="{{ url('department/update',$department->id) }}">
+            <form method="POST" action="{{ url('class/update',$data->id) }}">
                 @csrf
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">Title</label>
+                    <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
 
                     <div class="col-md-6">
-                        <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $department->title }}" required autofocus>
+                        <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $data->title }}" required autofocus>
 
                         @if ($errors->has('title'))
                             <span class="invalid-feedback" role="alert">
