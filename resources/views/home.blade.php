@@ -11,7 +11,17 @@
                 </div>
             @endif
 
-            You are logged in!
+            Total Student: {{ $student }}<br>
+                Department
+                @foreach($departments as $department)
+                    <li>{{ $department->title }} - {{ $department->student_count }}</li>
+                @endforeach
+                <br>
+            Class:
+            @foreach($classes as $class)
+                    <li>{{ $class->title }} - {{ $class->student_count }}</li>
+                @endforeach
+
         </div>
     </div>
 @endsection

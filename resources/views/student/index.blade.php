@@ -13,7 +13,8 @@
                     {{ session('status') }}
                 </div>
             @endif
-            <table class="table">
+            <div class="table-responsive">
+                <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -38,8 +39,8 @@
                     <td>{{ $data->phone_number }}</td>
                     <td>{{ $data->home_number }}</td>
                     <td>{{ $data->email }}</td>
-                    <td>{{ $data->department_id }}</td>
-                    <td>{{ $data->classes_id }}</td>
+                    <td>{{ $data->department->title }}</td>
+                    <td>{{ $data->classes->title }}</td>
                     <td>
                         <a href="{{ url('student/edit',$data->id) }}">Edit</a> ||
                         <form id="delete-form-{{ $data->id }}" method="post" action="{{ url('student/delete', $data->id) }}" style="display: none">
@@ -62,6 +63,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
 
      @endsection
