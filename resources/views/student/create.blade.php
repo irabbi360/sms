@@ -58,20 +58,6 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">Title</label>
-
-                    <div class="col-md-6">
-                        <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus>
-
-                        @if ($errors->has('title'))
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('title') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number</label>
 
                     <div class="col-md-6">
@@ -160,18 +146,18 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="classe_id" class="col-md-4 col-form-label text-md-right">Class</label>
+                    <label for="classes_id" class="col-md-4 col-form-label text-md-right">Class</label>
 
                     <div class="col-md-6">
-                        <select class="form-control{{ $errors->has('classe_id') ? ' is-invalid' : '' }}" name="classe_id" required>
+                        <select class="form-control{{ $errors->has('classes_id') ? ' is-invalid' : '' }}" name="classes_id" required>
                             <option value="">Select Class</option>
                             @foreach($classes as $class)
                                 <option value="{{ $class->id }}">{{ $class->title }}</option>
                             @endforeach
                         </select>
-                        @if ($errors->has('classe_id'))
+                        @if ($errors->has('classes_id'))
                             <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('classe_id') }}</strong>
+                            <strong>{{ $errors->first('classes_id') }}</strong>
                         </span>
                         @endif
                     </div>

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title','Departments')
+@section('title','Student List')
 
     @section('content')
 
         <div class="card">
             <div class="card-body">
-                Department List || <a href="{{ url('department/create') }}">Add Department</a>
+                Student List || <a href="{{ url('student/create') }}">Add Student</a>
             </div>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
@@ -17,18 +17,32 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Title</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Father's Name</th>
+                    <th scope="col">Mother's Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Home Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Class</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($departments as  $department)
+                @foreach($datas as  $data)
                 <tr>
-                    <th scope="row">{{ $department->id }}</th>
-                    <td>{{ $department->title }}</td>
+                    <th scope="row">{{ $data->id }}</th>
+                    <td>{{ $data->name }}</td>
+                    <td>{{ $data->father_name }}</td>
+                    <td>{{ $data->mother_name }}</td>
+                    <td>{{ $data->phone_number }}</td>
+                    <td>{{ $data->home_number }}</td>
+                    <td>{{ $data->email }}</td>
+                    <td>{{ $data->department_id }}</td>
+                    <td>{{ $data->classes_id }}</td>
                     <td>
-                        <a href="{{ url('department/edit',$department->id) }}">Edit</a> ||
-                        <form id="delete-form-{{ $department->id }}" method="post" action="{{ url('department/delete', $department->id) }}" style="display: none">
+                        <a href="{{ url('student/edit',$data->id) }}">Edit</a> ||
+                        <form id="delete-form-{{ $data->id }}" method="post" action="{{ url('student/delete', $data->id) }}" style="display: none">
                             {{csrf_field()}}
                             {{ method_field('DELETE') }}
                         </form>
@@ -37,7 +51,7 @@
                                 if(confirm('Are you sure, You want to Delete this ??'))
                                 {
                                 event.preventDefault();
-                                document.getElementById('delete-form-{{ $department->id }}').submit();
+                                document.getElementById('delete-form-{{ $data->id }}').submit();
                                 }
                                 else {
                                 event.preventDefault();

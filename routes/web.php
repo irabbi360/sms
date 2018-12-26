@@ -38,3 +38,7 @@ Route::delete('class/delete/{id}','ClassController@delete');
 //student route
 ROute::get('students','StudentController@index');
 ROute::get('student/create','StudentController@create');
+ROute::post('student/save','StudentController@save');
+ROute::get('student/edit/{id}','StudentController@edit');
+ROute::post('student/update/{id}','StudentController@update');
+ROute::delete('student/delete/{id}','StudentController@delete');
