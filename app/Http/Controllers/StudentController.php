@@ -6,6 +6,7 @@ use App\Classes;
 use App\Department;
 use App\Student;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class StudentController extends Controller
 {
@@ -28,7 +29,31 @@ class StudentController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
+            'image' => 'required',
         ]);
+
+        /*$student = new Student();
+        $student->name = $request->name;
+        $student->father_name = $request->father_name;
+        $student->phone_number = $request->phone_number;
+        $student->email = $request->email;
+        $student->roll = $request->roll;
+        $student->reg_id = $request->reg_id;
+        $student->department_id = $request->department_id;
+        $student->classes_id = $request->classes_id;
+        $student->mother_name = $request->mother_name;
+        $student->present_address = $request->present_address;
+        $student->permanent_address = $request->permanent_address;
+        $student->title = $request->title;
+        $student->home_number = $request->home_number;*/
+        $stdImage ='';
+        if ($request->hasFile('image')){
+
+            $image = $request->file('image');
+            $filename = time() .'.'. $image->getClientOriginalExtension();
+            Image::make($image)->save(public_path('/uploads/students/' . $filename));
+            $stdImage = $filename;
+        }
 
         Student::create([
             'name' => $request->name,
@@ -44,6 +69,7 @@ class StudentController extends Controller
             'permanent_address' => $request->permanent_address,
             'title' => $request->title,
             'home_number' => $request->home_number,
+            'image' => $stdImage,
         ]);
 
         return redirect()->back()->with('status','Student successfully saved');

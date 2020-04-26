@@ -27,6 +27,7 @@ class CreateStudentsTable extends Migration
             $table->string('present_address');
             $table->string('permanent_address');
             $table->string('home_number');
+            $table->string('image');
             $table->timestamps();
         });
     }

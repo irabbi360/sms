@@ -19,6 +19,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Father's Name</th>
                     <th scope="col">Mother's Name</th>
                     <th scope="col">Phone</th>
@@ -34,6 +35,7 @@
                 <tr>
                     <th scope="row">{{ $data->id }}</th>
                     <td>{{ $data->name }}</td>
+                    <td><img src="{{ url('uploads/students/',$data->image) }}" style="height: 50px; width: 50px;"></td>
                     <td>{{ $data->father_name }}</td>
                     <td>{{ $data->mother_name }}</td>
                     <td>{{ $data->phone_number }}</td>

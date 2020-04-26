@@ -9,7 +9,9 @@
             <div class="container">
 
                 <div class="row justify-content-center">
-                    @include('layouts.includes.siderbar')
+                    @if(auth()->user())
+                        @include('layouts.includes.siderbar')
+                    @endif
 
                     <div class="col-md-9">
                         @yield('content')
