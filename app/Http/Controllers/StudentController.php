@@ -67,7 +67,7 @@ class StudentController extends Controller
             'mother_name' => $request->mother_name,
             'present_address' => $request->present_address,
             'permanent_address' => $request->permanent_address,
-            'title' => $request->title,
+            //'title' => $request->title,
             'home_number' => $request->home_number,
             'image' => $stdImage,
         ]);
@@ -91,11 +91,34 @@ class StudentController extends Controller
             'name' => 'required'
         ]);
 
-        $data = Student::find($id);
+        $stdImage ='';
+        if ($request->hasFile('image')){
 
-        $data->update($request->all());
+            $image = $request->file('image');
+            $filename = time() .'.'. $image->getClientOriginalExtension();
+            Image::make($image)->save(public_path('/uploads/students/' . $filename));
+            $stdImage = $filename;
+        }
 
-        return redirect()->back()->with('status','Student successfully updated');
+        $student = Student::findOrFail($id);
+        $student->name = $request->name;
+        $student->father_name = $request->father_name;
+        $student->phone_number = $request->phone_number;
+        $student->email = $request->email;
+        $student->roll = $request->roll;
+        $student->reg_id = $request->reg_id;
+        $student->department_id = $request->department_id;
+        $student->classes_id = $request->classes_id;
+        $student->mother_name = $request->mother_name;
+        $student->present_address = $request->present_address;
+        $student->permanent_address = $request->permanent_address;
+        $student->home_number = $request->home_number;
+        $student->image = $stdImage;
+
+        if ($student->save()){
+            return redirect()->back()->with('status','Student successfully updated');
+        }
+        return redirect()->back()->with('status','Fail Student info update');
     }
 
     public function delete($id)

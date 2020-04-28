@@ -167,7 +167,7 @@
                     <label for="roll" class="col-md-4 col-form-label text-md-right">Roll</label>
 
                     <div class="col-md-6">
-                        <input id="roll" type="text" class="form-control{{ $errors->has('roll') ? ' is-invalid' : '' }}" name="classe_id" value="{{ old('roll') }}" required>
+                        <input id="roll" type="text" class="form-control{{ $errors->has('roll') ? ' is-invalid' : '' }}" name="roll" value="{{ old('roll') }}" required>
 
                         @if ($errors->has('roll'))
                             <span class="invalid-feedback" role="alert">
