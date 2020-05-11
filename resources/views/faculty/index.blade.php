@@ -23,7 +23,7 @@
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
                     <th scope="col">Department</th>
-                    <th scope="col">Class</th>
+                    <th scope="col">Education</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -34,12 +34,13 @@
                     <th scope="row">{{ $data->id }}</th>
                     <td>{{ $data->first_name }}</td>
                     <td>{{ $data->last_name }}</td>
-                    <td>{{ $data->phone_number }}</td>
+                    <td>{{ $data->phone }}</td>
                     <td>{{ $data->email }}</td>
                     <td>{{ $data->department_id }}</td>
+                    <td>{{ $data->education }}</td>
                     <td>
-                        <a href="{{ url('student/edit',$data->id) }}">Edit</a> ||
-                        <form id="delete-form-{{ $data->id }}" method="post" action="{{ url('student/delete', $data->id) }}" style="display: none">
+                        <a href="{{ route('faculties.edit',$data->id) }}">Edit</a> ||
+                        <form id="delete-form-{{ $data->id }}" method="post" action="{{ route('faculties.destroy', $data->id) }}" style="display: none">
                             {{csrf_field()}}
                             {{ method_field('DELETE') }}
                         </form>

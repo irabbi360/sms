@@ -84,7 +84,10 @@ class FacultyController extends Controller
      */
     public function edit(Faculty $faculty)
     {
-        //
+        //$data = Faculty::findOrFail($faculty); // here use findor fail becouse of if faculty id not found got the error 404
+        $departments = Department::all();
+
+        return view('faculty.edit', compact('faculty','departments'));
     }
 
     /**
@@ -94,9 +97,30 @@ class FacultyController extends Controller
      * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faculty $faculty)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'department_id' => 'required',
+            'education' => 'required',
+        ]);
+
+        $faculty = Faculty::find($id);
+        $faculty->first_name = $request->first_name;
+        $faculty->last_name = $request->last_name;
+        $faculty->phone = $request->phone;
+        $faculty->email = $request->email;
+        $faculty->department_id = $request->department_id;
+        $faculty->education = $request->education;
+
+        if ($faculty->save()){
+            return redirect()->back()->with('status','Faculty info updated');
+        }
+
+        return redirect()->back()->with('status','Whoops field!');
     }
 
     /**
@@ -107,6 +131,11 @@ class FacultyController extends Controller
      */
     public function destroy(Faculty $faculty)
     {
-        //
+        $deleted = $faculty->delete();
+
+        if ($deleted){
+            return redirect()->back()->with('status','Deleted successfully');
+        }
+        return redirect()->back()->with('status','Whoops! Delete Fail!');
     }
 }
