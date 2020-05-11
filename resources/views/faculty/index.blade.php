@@ -36,7 +36,7 @@
                     <td>{{ $data->last_name }}</td>
                     <td>{{ $data->phone }}</td>
                     <td>{{ $data->email }}</td>
-                    <td>{{ $data->department_id }}</td>
+                    <td>{{ $data->department->title }}</td>
                     <td>{{ $data->education }}</td>
                     <td>
                         <a href="{{ route('faculties.edit',$data->id) }}">Edit</a> ||
