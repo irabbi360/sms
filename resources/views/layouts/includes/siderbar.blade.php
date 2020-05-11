@@ -5,6 +5,9 @@
             <a href="{{ url('departments') }}">Departments</a>
         </div>
         <div class="card-body">
+            <a href="{{ route('faculties.index') }}">Faculties</a>
+        </div>
+        <div class="card-body">
             <a href="{{ url('classes') }}">Class</a>
         </div>
         <div class="card-body">
