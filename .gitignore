@@ -10,3 +10,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/.fleet
+/.vscode
+.DS_Store
+package-lock.json
+yarn.lock
